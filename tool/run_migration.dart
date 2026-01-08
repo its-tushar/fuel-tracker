@@ -1,18 +1,7 @@
-import 'package:flutter/widgets.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:fuel_tracker/api_service.dart';
+import 'dart:io';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  final api = ApiService();
-  try {
-    final migrated = await api.migrateRemoteToLocal();
-    print('Migration completed: $migrated rows cached into Hive');
-  } catch (e) {
-    print('Migration failed: $e');
-  } finally {
-    // Close boxes and exit
-    await Hive.close();
-  }
+  stdout.writeln('Deprecated: remote migration has been removed from this project.');
+  stdout.writeln('Use the CSV importer or re-add remote migration manually if needed.');
+  exit(0);
 }
